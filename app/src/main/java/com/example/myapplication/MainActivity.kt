@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.view.Display.Mode
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -31,14 +32,13 @@ import com.example.myapplication.ui.theme.MyApplicationTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             MyApplicationTheme {
                 Surface (
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    HappyBirthday(stringResource(R.string.bonjour), stringResource(R.string.adam))
+                    JetComposeTutorial()
                 }
             }
         }
@@ -46,50 +46,29 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun HappyBirthday(message: String, from: String, modifier: Modifier = Modifier) {
-    Box {
-        GettingImage()
-        GettingText(
-            message = message,
-            from = from,
-            modifier = modifier
-                .fillMaxSize()
-                .padding(16.dp))
-    }
-
-}
-
-@Composable
-fun GettingImage()
+fun JetComposeTutorial(modifier: Modifier = Modifier)
 {
-    val image = painterResource(R.drawable.androidparty)
-    Image(
-        painter = image,
-        contentDescription = null,
-        contentScale = ContentScale.Crop,
-        alpha = 0.5F
-    )
-}
+    val image = painterResource(R.drawable.bg_compose_background)
+    Column(modifier = modifier){
+        Image(
+            painter = image,
+            contentDescription = null,
+            )
+        Text(
+            text = stringResource(R.string.jetpack_compose_tutorial),
+            fontSize = 24.sp,
+            modifier = Modifier.padding(16.dp)
+        )
+        Text(
+            text = stringResource(R.string.what_is_jet_compose),
+            Modifier.padding(16.dp)
+            )
+        Text(
+            text = stringResource(R.string.jet_compose_tutorial),
+            modifier = Modifier.padding(16.dp),
+            textAlign = TextAlign.Justify
+        )
 
-@Composable
-fun GettingText(message: String, from: String, modifier: Modifier = Modifier) {
-    Column (
-        verticalArrangement = Arrangement.Center,
-        modifier = modifier
-    ) {
-        Text(
-            text = message,
-            fontSize = 80.sp,
-            lineHeight = 100.sp,
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = from,
-            fontSize = 32.sp,
-            modifier = Modifier
-                .padding(16.dp)
-                .align(alignment = Alignment.End)
-        )
     }
 
 }
@@ -97,11 +76,11 @@ fun GettingText(message: String, from: String, modifier: Modifier = Modifier) {
 @Preview(
     showBackground = true,
     showSystemUi = true,
-    name  = "By The Way"
+    name  = "Jet Compose Tutorial"
 )
 @Composable
 fun GreetingPreview() {
     MyApplicationTheme {
-        HappyBirthday(stringResource(R.string.bonjour), stringResource(R.string.adam))
+        JetComposeTutorial()
     }
 }
