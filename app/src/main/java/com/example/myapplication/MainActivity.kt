@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,7 +39,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    JetComposeTutorial()
+                    TaskCompleted()
                 }
             }
         }
@@ -46,41 +47,30 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun JetComposeTutorial(modifier: Modifier = Modifier)
-{
-    val image = painterResource(R.drawable.bg_compose_background)
-    Column(modifier = modifier){
-        Image(
-            painter = image,
-            contentDescription = null,
-            )
+fun TaskCompleted(modifier: Modifier = Modifier) {
+    val image = painterResource(R.drawable.ic_task_completed)
+    Column (
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(painter = image, contentDescription = null)
         Text(
-            text = stringResource(R.string.jetpack_compose_tutorial),
-            fontSize = 24.sp,
-            modifier = Modifier.padding(16.dp)
+            text = stringResource(R.string.all_tasks_completed),
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = 24.dp, bottom = 8.dp)
         )
-        Text(
-            text = stringResource(R.string.what_is_jet_compose),
-            Modifier.padding(16.dp)
-            )
-        Text(
-            text = stringResource(R.string.jet_compose_tutorial),
-            modifier = Modifier.padding(16.dp),
-            textAlign = TextAlign.Justify
-        )
-
+        Text(text = stringResource(R.string.nice_work))
     }
-
 }
-
 @Preview(
     showBackground = true,
     showSystemUi = true,
-    name  = "Jet Compose Tutorial"
+    name = "TaskCompleted"
 )
 @Composable
 fun GreetingPreview() {
     MyApplicationTheme {
-        JetComposeTutorial()
+        TaskCompleted()
     }
 }
