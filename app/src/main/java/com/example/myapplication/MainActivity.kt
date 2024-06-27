@@ -28,8 +28,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
-private const val s = "Bonjour Najma, ca va ?"
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +38,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    HappyBirthday(
-                        "Bonjour Najma, ca va ?",
-                        "Adam",
-                        modifier = Modifier
-                            .padding(16.dp)
-                    )
+                    HappyBirthday(stringResource(R.string.bonjour), stringResource(R.string.adam))
                 }
             }
         }
@@ -94,8 +87,7 @@ fun GettingText(message: String, from: String, modifier: Modifier = Modifier) {
             text = from,
             fontSize = 32.sp,
             modifier = Modifier
-                .fillMaxSize(
-                )
+                .padding(16.dp)
                 .align(alignment = Alignment.End)
         )
     }

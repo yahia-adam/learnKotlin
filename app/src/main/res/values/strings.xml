@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="bonjour">Bonjour Najma, ca va ?</string>
-    <string name="adam">Adam</string>
+    <string name="app_name">Happy Birthday</string>
+    <string name="bonjour">Happy Birthday Najma :)</string>
+    <string name="adam">From Adam</string>
 </resources>
